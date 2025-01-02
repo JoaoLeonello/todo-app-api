@@ -1,17 +1,10 @@
-const app = require('./server-config.js');
-const routes = require('./server-routes.js');
+const app = require('./infrastructure/frameworks/express/server-config.js');
+const routes = require('./infrastructure/frameworks/express/routes/server-routes.js');
 const knex = require('knex')(require('./knexfile.js')[process.env.NODE_ENV || 'development']);
 
-const port = process.env.PORT || 5000;
+const port = process.env.PORT || 3000;
 
-app.get('/', routes.getAllTodos);
-app.get('/:id', routes.getTodo);
-
-app.post('/', routes.postTodo);
-app.patch('/:id', routes.patchTodo);
-
-app.delete('/', routes.deleteAllTodos);
-app.delete('/:id', routes.deleteTodo);
+app.use(routes)
 
 // Run migrations and start the server
 if (process.env.NODE_ENV !== 'test') {

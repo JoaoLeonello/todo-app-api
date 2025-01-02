@@ -25,6 +25,7 @@ module.exports = {
 
   development: {
     client: 'pg',
+    debug: true,
     connection: {
       host: process.env.PGHOST || 'postgres_db',
       database: process.env.PGDATABASE || 'todo',
@@ -37,7 +38,7 @@ module.exports = {
     },
     migrations: {
       tableName: 'knex_migrations',
-      directory: './migrations'
+      directory: './infrastructure/database/migrations'
     }
   },
 
