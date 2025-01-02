@@ -30,7 +30,7 @@ Follow these steps to run the API locally using Docker:
 ### 1. Clone the Repository
 
 ```bash
-git clone https://github.com/your-username/task-management-api.git
+git clone https://github.com/JoaoLeonello/task-management-api.git
 cd task-management-api
 ```
 
