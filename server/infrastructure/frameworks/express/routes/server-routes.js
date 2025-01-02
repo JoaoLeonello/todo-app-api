@@ -15,10 +15,25 @@ const userRepository = new UserRepository();
 const userService = new UserService(userRepository);
 const userController = new UserController(userService);
 
+// Factory function
+const createOrganizationRoutes = require('../../../../modules/organizations/routes/organizationRoutes');
+
+// Organization dependencies
+const OrganizationRepository = require('../../../../modules/organizations/repositories/OrganizationRepository');
+const OrganizationService = require('../../../../modules/organizations/services/OrganizationService');
+const OrganizationController = require('../../../../modules/organizations/controllers/OrganizationController');
+
+const organizationRepository = new OrganizationRepository();
+const organizaitonService = new OrganizationService(organizationRepository);
+const organizationController = new OrganizationController(organizaitonService);
+
+
 const userRoutes = createUserRoutes(userController);
+const organizationRoutes = createOrganizationRoutes(organizationController)
 
 // Montar as rotas de usuários no path '/users'
 router.use('/users', userRoutes);
+router.use('/organizations', organizationRoutes);
 
 // Exportar o router principal
 module.exports = router;
