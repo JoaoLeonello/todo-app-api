@@ -31,7 +31,7 @@ Follow these steps to run the API locally using Docker:
 
 ```bash
 git clone https://github.com/JoaoLeonello/todo-app-api.git
-cd task-management-api
+cd todo-app-api
 ```
 
 # Env Configuration
