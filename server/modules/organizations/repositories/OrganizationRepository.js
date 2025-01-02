@@ -22,6 +22,28 @@ class OrganizationRepository {
     const organizationRecord = await organizationQueries.findByName(name);
     return organizationRecord ? new Organization(organizationRecord) : null;
   }
+
+  async findById(id) {
+    const organizationRecord = await organizationQueries.findById(id);
+    return organizationRecord ? new Organization(organizationRecord) : null;
+  }
+
+  /**
+   * Adds a user to an organization with a specific role.
+   * @param {Object} params - Parameters for adding a user
+   * @param {number} params.user_id - User ID
+   * @param {number} params.organization_id - Organization ID
+   * @param {string} params.role - Role of the user in the organization
+   * @returns {Object} - The added user-organization relationship record
+   */
+  async addUser({ user_id, organization_id, role }) {
+    const userOrganizationRecord = await organizationQueries.addUserToOrganization({
+      user_id,
+      organization_id,
+      role,
+    });
+    return userOrganizationRecord; // Returns the raw database record
+  }
 }
 
 module.exports = OrganizationRepository;
