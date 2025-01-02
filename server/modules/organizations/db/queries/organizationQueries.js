@@ -28,6 +28,30 @@ const organizationQueries = {
   async findByName(name) {
     return knex('organizations').where({ name }).first();
   },
+
+  async findById(id) {
+    return knex('organizations').where({ id }).first();
+  },
+
+   /**
+   * Adds a user to an organization with a specified role
+   * @param {Object} params
+   * @param {number} params.user_id - The ID of the user
+   * @param {number} params.organization_id - The ID of the organization
+   * @param {string} params.role - The role of the user in the organization
+   * @returns {Object} The created user-organization relationship
+   */
+   async addUserToOrganization({ user_id, organization_id, role }) {
+    const [userOrganization] = await knex('user_organization')
+      .insert({
+        user_id,
+        organization_id,
+        role,
+        created_at: knex.fn.now()
+      })
+      .returning(['user_id', 'organization_id', 'role', 'created_at']);
+    return userOrganization;
+  }
 };
 
 module.exports = organizationQueries;
