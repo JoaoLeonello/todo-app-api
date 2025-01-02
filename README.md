@@ -32,3 +32,25 @@ Follow these steps to run the API locally using Docker:
 ```bash
 git clone https://github.com/your-username/task-management-api.git
 cd task-management-api
+```
+
+# Env Configuration
+
+Create a `.env` file in the root directory with the following variables:
+
+DATABASE_HOST=postgres 
+DATABASE_PORT=5432 
+DATABASE_NAME=task_management 
+DATABASE_USER=seu_usuario 
+DATABASE_PASSWORD=sua_senha
+
+## Build and execute
+
+Use docker-compose to build and execute the app:
+
+```bash
+docker-compose up --build
+```
+
+## Access the API
+access it in localhost:3000
