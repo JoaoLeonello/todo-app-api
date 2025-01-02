@@ -24,7 +24,7 @@ const OrganizationService = require('../../../../modules/organizations/services/
 const OrganizationController = require('../../../../modules/organizations/controllers/OrganizationController');
 
 const organizationRepository = new OrganizationRepository();
-const organizaitonService = new OrganizationService(organizationRepository);
+const organizaitonService = new OrganizationService(organizationRepository, userRepository);
 const organizationController = new OrganizationController(organizaitonService);
 
 
