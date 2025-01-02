@@ -1,69 +1,34 @@
-> [!WARNING]
-> I implemented this for an interview once ages ago, but now it's unmaintained.
+# Task Management API
 
-# todo-backend-express-knex
+This is a Task Management API that provides functionality for managing users, organizations, projects, tasks, and task comments.
 
-This is an implementation of [Todo-Backend](http://todobackend.com/) using Node and Express for the server, Knex for database migrations and query building, and some ES6+ features such as async/await. By default, this project configures Knex to save to PostgreSQL.
+## Features
 
-A [production instance](https://todo-backend-express-knex.herokuapp.com/) is running on Heroku.
+- User and organization management.
+- Project and task tracking.
+- Task status updates.
+- Commenting on tasks.
+- Role-based access control for users in organizations.
 
-Bonus features include a simple frontend boostrapped with create-react-app and the todo-backend specification tests transcribed for Jest--a quick full-stack starter pack.
+## Database Schema
 
-## Installation
+The API uses the following database schema:
 
-1. Clone this repository.
+![db_diagram](https://github.com/user-attachments/assets/51de1cdc-9ff2-43f2-92fe-a644f7a77565)
 
-    `git clone git@github.com:tonycheang/todo-backend-express-knex.git`
+## Prerequisites
 
-2. Install dependencies.
+Ensure you have the following installed on your system:
 
-    `yarn install`
+- [Docker](https://www.docker.com/)
+- [Docker Compose](https://docs.docker.com/compose/)
 
-3. Create a postgres database for the project.
+## Getting Started
 
-    ```Bash
-    % psql postgres -U your_username_here
-    postgres=> CREATE DATABASE name_of_db;
-    postgres=> GRANT ALL PRIVILEGES ON DATABASE name_of_db TO your_username_here;
-    postgres=> \q
-    ```
+Follow these steps to run the API locally using Docker:
 
-    > You could change the default database, but Knex's .returning() method will only work for PostgreSQL, MSSQL, and Oracle databases. Modifications will be needed for other databases to meet the todo-backend spec.
+### 1. Clone the Repository
 
-4. Add Postgres credentials into server/.env to allow Knex to connect to the database.
-5. Install Knex globally.
-
-    `npm install knex -g`
-
-6. Set up the database using Knex migrations.
-
-    `cd server && knex migrate:latest`
-
-7. Start the server on [http://localhost:5000](http://localhost:5000).
-
-    `yarn server`
-
-8. Test it against the spec at [Todo-Backend Specs](http://todobackend.com/specs/index.html?http://localhost:5000/)
-
-## Bonus Features
-
-- Run tests locally using either.
-
-    `yarn test`
-
-    `yarn test:watch`
-
-    >The second command requires watchman  
-    >`brew install watchman`
-
-- Install create-react-app frontend starting at root directory:
-
-    `cd client && yarn install`
-
-- Run backend and frontend simultaneously from root directory.
-
-    `yarn dev`
-
-    > Note: The proxied connection will only work locally.
-    > You'll need the server to serve the frontend build if
-    > you want to host the entire project somewhere.
+```bash
+git clone https://github.com/your-username/task-management-api.git
+cd task-management-api
